@@ -29,6 +29,8 @@ function* fetchAllMovies() {
         
 }
 
+
+
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
@@ -51,6 +53,8 @@ const genres = (state = [], action) => {
             return state;
     }
 }
+
+
 
 // Create one store that all components can use
 const storeInstance = createStore(
