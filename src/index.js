@@ -29,7 +29,21 @@ function* fetchAllMovies() {
         
 }
 
+// Create fetch SAGA for genre Get request
+// created a put that dispatches the server response to reducer
+function* fetchGenres(action) {
+    try{
+        const genreResponse = yield axios.get(`/api/genre/${action.payload}`)
+        yield put ({
+            type: 'ADD_GEN',
+            payload: genreResponse.data
+        })
+    } catch(error) {
+        console.log('Oh no our genres GET', error)
+    }
+}
 
+const genreList = (state = []) 
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
