@@ -43,7 +43,14 @@ function* fetchGenres(action) {
     }
 }
 
-const genreList = (state = []) 
+const genreList = (state = [], action) => {
+    switch (action.type) {
+        case 'ADD_GEN' :
+            return action.payload;
+        default:
+            return state;
+    }
+} 
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
