@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool')
 
+// added params to target the id of movies to be received from get request on client index
 router.get('/:id', (req, res) => {
   // Add query to get all genres
   const idView = req.params.id
