@@ -14,7 +14,8 @@ import axios from 'axios';
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
-    yield takeEvery('FETCH_GENRES', fetchGenres)
+    yield takeEvery('FETCH_GENRES', fetchGenres);
+    yield takeEvery('GET_DETAILS',fetchDetail )
 }
 
 function* fetchAllMovies() {
@@ -35,10 +36,7 @@ function* fetchAllMovies() {
 function* fetchGenres(action) {
     try{
         const genreResponse = yield axios.get(`/api/genre/${action.payload.id}`)
-        yield put ({
-            type: 'ADD_DETAIL',
-            payload: genreResponse.data
-        })
+     
         console.log(genreResponse.data)
         yield put({
             type:'SET_GENRES',
@@ -49,6 +47,20 @@ function* fetchGenres(action) {
     }
 }
 
+function* fetchDetail(action) {
+    try{
+        const detail = yield axios.get(action.payload)
+        yield put ({
+            type: 'ADD_DETAIL',
+            payload: detail.data
+        })
+    } catch(err){
+        console.log('Something is wrong with details SAGA', err)
+    }
+}
+
+// created details reducer to collect the specific movie clicked on's information
+// it will be connected to details SAGA
 const details = (state = [], action) => {
     switch (action.type) {
         case 'ADD_DETAIL' :
