@@ -13,6 +13,7 @@ function MovieDescription() {
     return (
         <div>
         <h3>This movie is great!</h3>
+        <img src
         <button onClick={handleBack}> Back</button>
         </div> )
 }

@@ -14,7 +14,7 @@ function MovieList() {
 
         dispatch({
             type: 'GET_DETAILS',
-            payload: movie.id
+            payload: movie
         })
         dispatch({
             type:'FETCH_GENRES',
@@ -36,9 +36,9 @@ function MovieList() {
             <section className="movies">
                 {movies.map(movie => {
                     return (
-                        <div key={movie.id} onClick={() => handleDetails(movie) } >
+                        <div key={movie.id}  >
                             <h3>{movie.title}</h3>
-                            <img src={movie.poster} alt={movie.title}/>
+                            <img onClick={() => handleDetails(movie) } src={movie.poster} alt={movie.title}/>
                         </div>
                     );
                 })}

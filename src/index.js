@@ -49,10 +49,10 @@ function* fetchGenres(action) {
 
 function* fetchDetail(action) {
     try{
-        const detail = yield axios.get(action.payload)
+       
         yield put ({
             type: 'ADD_DETAIL',
-            payload: detail.data
+            payload: action.payload
         })
     } catch(err){
         console.log('Something is wrong with details SAGA', err)
@@ -100,7 +100,7 @@ const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
-        // details
+        details
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
