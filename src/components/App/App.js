@@ -13,7 +13,7 @@ function App() {
         </Route>
         
         {/* Details page */}
-        <Route path='/:id'>
+        <Route path='/detail'>
           <MovieDescription />
         </Route>
         {/* Add Movie page */}

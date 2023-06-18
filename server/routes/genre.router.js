@@ -6,11 +6,21 @@ const pool = require('../modules/pool')
 router.get('/:id', (req, res) => {
   // Add query to get all genres
   const idView = req.params.id
-  const sqlText =  `SELECT FROM genres."name" AS genre FROM genres JOIN 
-    "movies_genres ON genres.id = movies_genres.id 
-    JOIN movies on movies.id = movies_genres.id
-    WHERE movies.id = $1`
-  res.sendStatus(500)
+  const sqlText =  `SELECT movies.title, genres.name AS genre, movies.id, genres.id AS genres_id
+  FROM movies
+  JOIN movies_genres ON movies.id = movies_genres.movie_id
+  JOIN genres ON genres.id = movies_genres.genre_id
+  WHERE "movies"."id" = $1;`
+
+    pool.query(sqlText,[idView])
+    .then(result => {
+      console.log(result.rows)
+      res.send(result.rows)
+    }).catch(err => {
+      console.log('Server Genre GET', err)
+      res.sendStatus(500)
+    })
+ 
 });
 
 module.exports = router;

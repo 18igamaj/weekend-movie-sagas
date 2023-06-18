@@ -1,11 +1,13 @@
-
 import {useHistory} from 'react-router-dom'
 
-function MovieDescription() {
-    const history 
-    handleBack = () => {
 
-        us
+
+
+function MovieDescription() {
+    const history = useHistory()
+   const handleBack = () => {
+
+        history.push('/')
     }
 
     return (
