@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 
 //movie Description Component function that is called in APP
 function MovieDescription() {
+    // using hooks to manipulate in component
     const history = useHistory()
     const details = useSelector(store => store.details)
     const allGenres = useSelector(store => store.genres)
