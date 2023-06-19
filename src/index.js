@@ -12,6 +12,7 @@ import { takeEvery, put } from 'redux-saga/effects';
 import axios from 'axios';
 
 // Create the rootSaga generator function
+// that will watch for our action types and call the SAGAs
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_GENRES', fetchGenres);
