@@ -1,10 +1,13 @@
 import {useHistory} from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
-
+// Imported react redux hooks
 
 
 function MovieDescription() {
     const history = useHistory()
+    const details = useSelector(store => store.details)
+    const allGenres = useSelector(store => store.genres)
    const handleBack = () => {
 
         history.push('/')
@@ -12,8 +15,14 @@ function MovieDescription() {
 
     return (
         <div>
-        <h3>This movie is great!</h3>
-        <img src
+        <h3>{details.title}</h3>
+        <img src={details.poster} />
+        <p>{details.description}</p>
+        {allGenres.map(genre => (
+            <div key={genre.genres_id} > 
+                <h4>{genre.genre}</h4>
+            </div>
+        ))}
         <button onClick={handleBack}> Back</button>
         </div> )
 }
