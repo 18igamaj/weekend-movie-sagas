@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 //movie Description Component function that is called in APP
 function MovieDescription() {
     // using hooks to manipulate in component
+    // using two different reducers to pull details and genres on UI
     const history = useHistory()
     const details = useSelector(store => store.details)
     const allGenres = useSelector(store => store.genres)
@@ -16,6 +17,8 @@ function MovieDescription() {
 
     return (
         <div>
+        {/* Rendering to our UI from genres reducer and 
+        mapping through genres to show specific targets to be rendered on Page Load */}
         <h3>{details.title}</h3>
         <img src={details.poster} />
         <p>{details.description}</p>
