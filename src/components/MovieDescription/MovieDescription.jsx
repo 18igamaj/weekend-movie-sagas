@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 
 // Imported react redux hooks
 
-
+//movie Description Component function that is called in APP
 function MovieDescription() {
     const history = useHistory()
     const details = useSelector(store => store.details)
