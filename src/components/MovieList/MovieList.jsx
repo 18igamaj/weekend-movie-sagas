@@ -9,6 +9,8 @@ function MovieList() {
     const movies = useSelector(store => store.movies);
     const history = useHistory()
 
+    // event handler that dispatches to our GET_Details SAGA and Fetch Saga
+    // to be stored in our reducer and server
     const handleDetails = (movie) => {
         console.log(movie.id)
 
